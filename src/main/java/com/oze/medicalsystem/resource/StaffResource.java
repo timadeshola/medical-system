@@ -6,9 +6,11 @@ import com.oze.medicalsystem.model.request.StaffRequest;
 import com.oze.medicalsystem.model.response.AppResponse;
 import com.oze.medicalsystem.model.response.StaffResponse;
 import com.oze.medicalsystem.service.StaffService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,6 +31,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("staff")
+@Api(tags = "Staff Resource")
 public class StaffResource {
 
     private final StaffService staffService;
@@ -54,7 +57,7 @@ public class StaffResource {
                 .build());
     }
 
-    @PutMapping("all")
+    @GetMapping
     @StaffValidation
     public ResponseEntity<AppResponse<List<StaffResponse>>> fetchAll() {
         List<StaffResponse> response = staffService.fetchAll();

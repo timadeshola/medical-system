@@ -42,7 +42,7 @@ public class SwaggerConfig {
     public Docket swaggerPlugin() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.oze.medicalsystem.resource"))
                 .paths(PathSelectors.any())
                 .build()
                 .directModelSubstitute(LocalDate.class, String.class)
@@ -71,7 +71,7 @@ public class SwaggerConfig {
     }
 
     private ApiKey apiKey() {
-        return new ApiKey("apiKey", "Authorization", "header");
+        return new ApiKey("uuid", "Authorization", "header");
     }
 
     private SecurityContext securityContext() {
@@ -83,7 +83,7 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Collections.singletonList(new SecurityReference("apiKey", authorizationScopes));
+        return Collections.singletonList(new SecurityReference("uuid", authorizationScopes));
     }
 
 }

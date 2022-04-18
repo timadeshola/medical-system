@@ -5,6 +5,7 @@ import com.oze.medicalsystem.core.constants.AppConstant;
 import com.oze.medicalsystem.model.response.AppResponse;
 import com.oze.medicalsystem.model.response.PatientResponse;
 import com.oze.medicalsystem.service.PatientService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("patient")
+@Api(tags = "Patience Resource")
 public class PatientResource {
 
     private final PatientService patientService;

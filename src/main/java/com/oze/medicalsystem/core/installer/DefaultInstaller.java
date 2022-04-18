@@ -53,7 +53,7 @@ public class DefaultInstaller implements ApplicationListener<ContextRefreshedEve
 
     protected void createStaffIfNotExist() {
         long count = staffRepository.count();
-        if (count > 5) {
+        if (count > 4) {
             return;
         }
         staffRepository.save(Staff.builder()
@@ -64,7 +64,7 @@ public class DefaultInstaller implements ApplicationListener<ContextRefreshedEve
 
     protected void createPatientIfNotExist() {
         long count = patientRepository.count();
-        if (count > 200) {
+        if (count > 199) {
             return;
         }
         Random random = new SecureRandom();
